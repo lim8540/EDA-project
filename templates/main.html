@@ -1,0 +1,394 @@
+<html>
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EDA project</title>
+    <meta name="Nova theme" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="{% static 'assets/images/favicon.png' %}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+
+<body>
+
+<!-- Navigation
+    ================================================== -->
+<div class="hero-background">
+    <div>
+        <img class="strips" src="{% static 'assets/images/football.jpg' %}" width="100%">
+    </div>
+    <div class="container">
+        <!--navigation-->
+
+
+        <!-- Hero-Section
+          ================================================== -->
+
+        <div class="hero row">
+            <div class="hero-right col-sm-6 col-sm-6">
+                <h1 class="header-headline bold"> Analysis of the international football match results  <br></h1>
+                <h4 class="header-running-text light"> This analysis deals with the results of international football matchs from 1876 to 2020, and focuses on whether winners of matches were Home team or Away team.
+                    </h4>
+            </div><!--hero-left-->
+
+
+            <div><img class="mouse" src="{% static 'assets/images/mouse.svg' %}"/></div>
+
+        </div><!--hero-->
+
+    </div> <!--hero-container-->
+
+</div><!--hero-background-->
+
+
+<!-- Features
+  ================================================== -->
+
+<div id="features" class="features-section">
+
+    <div class="features-container row">
+
+        <h2 class="features-headline light">FEATURES</h2>
+
+        <div class="col-md-6 feature">
+
+            <div class="feature-icon feature-no-display">
+                <img class="feature-img" src="{% static 'assets/images/data_image.svg' %}">
+            </div>
+            <h5 class="feature-head-text feature-no-display"> Dataset </h5>
+            <p class="feature-subtext light feature-no-display"> Kaggle International football results from 1872 to 2020
+
+                device: smartphone, tablet, laptop and desktop.</p>
+        </div>
+
+        <div class="col-md-6 feature">
+            <div class="feature-icon feature-no-display feature-display-mid">
+                <img class="feature-img" src="{% static 'assets/images/customizable.svg' %}">
+            </div>
+            <h5 class="feature-head-text feature-no-display feature-display-mid"> Tools </h5>
+            <p class="feature-subtext light feature-no-display feature-display-mid"> Django, Python, Chart.js, Bootstrap</p>
+        </div>
+
+       
+    </div> <!--features-container-->
+</div> <!--features-section-->
+
+
+
+<!-- White-Section
+  ================================================== -->
+
+<div class="gray-section row">
+
+    <div class = "imac col-sm-8 chart">
+        <canvas id="canvas2"></canvas>
+    </div>
+    <!--imac-->
+
+    <div class="col-sm-4">
+
+        <div class="white-section-text">
+
+            <h3 class="imac-section-header light">Which team won the game?</h3>
+
+            <div class="imac-section-desc">
+
+            <span>이번 분석에서 사용된 데이터는 'Kaggle International football results from 1872 to 2020'
+                이라는 데이터로, 1872년부터 2020년까지 있었던 축구 국가대표팀 경기의 결과를 담고있다. 이중에서 중립국에서 열린 경기를
+                제외한 총 31530개의 경기수를 토대로 분석을 하였다. 옆의 그래프에서 볼 수 있듯이, 절반이 넘는 경기의 승리 팀은 홈팀임을 알 수있다.
+                이른바 '홈어드벤티지'라고 불리는 홈경기를 치르는 팀들이 가지는 이점이 생각보다 큼을 알 수 있다.
+            </span>
+            </div>
+        </div>
+    </div>
+</div><!--white-section-text-section--->
+
+
+<!-- Pricing
+  ================================================== -->
+  <div class="white-section row">
+
+    <div class="col-sm-4">
+
+        <div class="white-section-text">
+
+            <h3 class="imac-section-header light">Winning rate by Nations</h3>
+
+            <div class="imac-section-desc">
+
+            <span>다음의 그래프는 총 경기수가 가장 많았던 15개 국가의 승률을 보여준다. 
+                노란색선은 홈경기와 어웨이경기를 모두 합친 승률이며, 초록색선은 홈경기에서의 승률을 보여준다. 마지막 빨간색선은 어웨이 경기에서의 승률을 보여준다.
+            15개 국가 모두 정도의 차이는 있지만 홈경기 승률이 어웨이 경기보다 높았으며, 전체 승률은 그 가운데에서 형성 되었음을 알 수 있다.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class = "imac col-sm-8 chart">
+        <canvas id="canvas"></canvas>
+    </div>
+    <!--imac-->
+
+    
+</div><!--white-section-text-section--->
+
+<div class="gray-section row">
+
+    <div class = "imac col-sm-8 chart">
+        <canvas id="canvas3"></canvas>
+    </div>
+    <!--imac-->
+
+    <div class="col-sm-4">
+
+        <div class="white-section-text">
+
+            <h3 class="imac-section-header light">Top15 Teams that have minimal gap between home & away</h3>
+
+            <div class="imac-section-desc">
+
+            <span> 다음의 차트는 홈팀에서의 승률과 어웨이경기에서의 차이가 가장 작은 15개 팀의 승률을 보여준다.
+                그 차이가 가장 작은 팀은 Réunion(레위니옹)으로, 198개팀 중 유일하게 어웨이 승률이 홈승률보다 높은 팀이었다.
+                
+            </span>
+            </div>
+        </div>
+    </div>
+</div><!--white-section-text-section--->
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<script src="{% static 'assets/js/script.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js
+"></script>  
+<script>
+    new Chart(document.getElementById("canvas"), {
+      type: 'line',
+      data: {
+          labels: [
+              {% for data in database %}
+              "{{data.name}}",
+              {% endfor %}
+          ],
+          datasets: [{
+              label: 'Total Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.total_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 201, 14, 1)",
+              backgroundColor: "rgba(255, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Home Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.home_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(100, 201, 14, 1)",
+              backgroundColor: "rgba(100, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Away Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.away_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 100, 140, 1)",
+              backgroundColor: "rgba(255, 100, 140, 1)",
+              fill: false,
+              lineTension: 0
+          }]
+      },
+      options: {
+          responsive: true,
+          title: {
+              display: true,
+              text: 'Winning rate by Home & Away'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Country'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  ticks: {
+                      suggestedMin: 0,
+                  },
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Winning Rate'
+                  }
+              }]
+          }
+      }
+  });
+  
+</script>
+
+<script>
+    //label = label.slice(1, -1);
+    new Chart(document.getElementById("canvas2"), {
+      type: 'pie',
+      data: {
+          labels: [
+          'Home Win', 'Away Win', 'Draw'
+          ],
+          datasets: [
+          {
+              label: 'Winning team',
+              data: [
+              {% for data in basic_data %}
+              {{data.Home_win}},{{data.Away_win}},{{data.Draw}}
+              {% endfor %}
+              ],
+              backgroundColor: [
+              "rgba(255, 201, 14, 1)",
+                  "rgba(255, 100, 140, 1)",
+                  "rgba(100, 201, 14, 1)"
+
+          ]
+          }]
+      },
+      options: {
+          responsive: true,
+          title: {
+              display: true,
+              text: 'Who is the Winner?'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          
+      }
+  });
+  
+</script>
+
+<script>
+    new Chart(document.getElementById("canvas3"), {
+      type: 'line',
+      data: {
+          labels: [
+              {% for data in gap_data %}
+              "{{data.name}}",
+              {% endfor %}
+          ],
+          datasets: [{
+              label: 'Total Winning Rate',
+              data: [
+              {% for data in gap_data %}
+              "{{data.total_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 201, 14, 1)",
+              backgroundColor: "rgba(255, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Home Winning Rate',
+              data: [
+              {% for data in gap_data %}
+              "{{data.home_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(100, 201, 14, 1)",
+              backgroundColor: "rgba(100, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Away Winning Rate',
+              data: [
+              {% for data in gap_data %}
+              "{{data.away_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 100, 140, 1)",
+              backgroundColor: "rgba(255, 100, 140, 1)",
+              fill: false,
+              lineTension: 0
+          }]
+      },
+      options: {
+          responsive: true,
+          title: {
+              display: true,
+              text: 'Winning rate by Home & Away'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Country'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  ticks: {
+                      suggestedMin: 0,
+                  },
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Winning Rate'
+                  }
+              }]
+          }
+      }
+  });
+  
+</script>
+
+
+</body>
+
+</html>

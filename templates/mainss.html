@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+
+<div style="width:100%;">
+    <canvas id="canvas"></canvas>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js
+"></script>  
+<script>
+    //label = label.slice(1, -1);
+    new Chart(document.getElementById("canvas"), {
+      type: 'line',
+      data: {
+          labels: [
+              {% for data in database %}
+              "{{data.name}}",
+              {% endfor %}
+          ],
+          datasets: [{
+              label: 'Total Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.total_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 201, 14, 1)",
+              backgroundColor: "rgba(255, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Home Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.home_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(100, 201, 14, 1)",
+              backgroundColor: "rgba(100, 201, 14, 1)",
+              fill: false,
+              lineTension: 0
+          },
+          {
+              label: 'Away Winning Rate',
+              data: [
+              {% for data in database %}
+              "{{data.away_winning_rate}}",
+              {% endfor %}
+              ],
+              borderColor: "rgba(255, 100, 140, 1)",
+              backgroundColor: "rgba(255, 100, 140, 1)",
+              fill: false,
+              lineTension: 0
+          }]
+      },
+      options: {
+          responsive: true,
+          title: {
+              display: true,
+              text: 'Winning rate by Home & Away'
+          },
+          tooltips: {
+              mode: 'index',
+              intersect: false,
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          },
+          scales: {
+              xAxes: [{
+                  display: true,
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Country'
+                  }
+              }],
+              yAxes: [{
+                  display: true,
+                  ticks: {
+                      suggestedMin: 0,
+                  },
+                  scaleLabel: {
+                      display: true,
+                      labelString: 'Winning Rate'
+                  }
+              }]
+          }
+      }
+  });
+  
+</script>
+  
